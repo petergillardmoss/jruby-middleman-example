@@ -96,7 +96,6 @@ Warbler::Config.new do |config|
 
   # Allows for specifing custom executables
   # config.executable = ["rake", "bin/rake"]
-  config.executable = ['middleman-core-3.1.6', 'bin/middleman']
 
   # Sets default (prefixed) parameters for the executables
   #config.executable_params = "do:something"
