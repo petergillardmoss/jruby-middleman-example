@@ -1,0 +1,26 @@
+
+function install_jruby {
+  sudo apt-get install --quiet --quiet --yes openjdk-7-jre-headless
+
+  if [ ! -d tools/jruby-1.7.4 ]
+  then
+        if [ ! -f /tmp/jruby-bin-1.7.4.tar.gz ]
+        then
+           wget --quiet --output-document /tmp/jruby-bin-1.7.4.tar.gz  http://jruby.org.s3.amazonaws.com/downloads/1.7.4/jruby-bin-1.7.4.tar.gz
+        fi
+
+        mkdir -p tools
+        (
+          cd tools
+          tar --extract --file /tmp/jruby-bin-1.7.4.tar.gz
+        )
+   fi
+}
+
+install_jruby
+
+export PATH=$(pwd)/tools/jruby-1.7.4/bin:$PATH
+
+jgem install bundler
+
+bundle install --quiet
